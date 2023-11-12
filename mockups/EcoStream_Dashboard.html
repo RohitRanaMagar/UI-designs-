@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoStream - Glassmorphism Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --accent-color: #38bdf8;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dashboard {
+            width: 90%;
+            max-width: 1000px;
+            height: 600px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 30px;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        h1 { font-size: 24px; margin-bottom: 30px; color: var(--accent-color); }
+        .nav-item { padding: 12px 0; color: #94a3b8; cursor: pointer; }
+        .nav-item.active { color: white; font-weight: bold; }
+        
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 65%;
+            background: var(--accent-color);
+            border-radius: 4px;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>EcoStream</h2>
+            <div class="nav-item active">Dashboard</div>
+            <div class="nav-item">Analytics</div>
+            <div class="nav-item">Devices</div>
+            <div class="nav-item">Settings</div>
+        </div>
+        <div class="main-content">
+            <h1>Welcome back, Alex</h1>
+            <div class="card">
+                <h3>Current Impact Score</h3>
+                <div style="font-size: 32px; font-weight: bold;">842 <span style="font-size: 14px; color: #10b981;">+12% vs last month</span></div>
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+            <div class="stat-grid">
+                <div class="card"><h4>Water</h4><p>120L</p></div>
+                <div class="card"><h4>Energy</h4><p>42 kWh</p></div>
+                <div class="card"><h4>Waste</h4><p>2.4 kg</p></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

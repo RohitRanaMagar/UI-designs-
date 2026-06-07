@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack — Fitness Gamification</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0d0d12; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 40px 20px; }
+        .phone { width: 360px; background: #12121a; border-radius: 40px; border: 6px solid #1e1e2a; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.6); position: relative; }
+        .phone-notch { width: 120px; height: 24px; background: #0d0d12; border-radius: 0 0 16px 16px; margin: 0 auto; }
+        .status-bar { display: flex; justify-content: space-between; padding: 12px 24px 8px; color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 500; }
+        .content { padding: 0 20px 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .header h1 { font-size: 22px; font-weight: 700; color: #fff; }
+        .header .badge { background: #ff5a5f; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+        .streak { display: flex; align-items: center; gap: 8px; background: rgba(255,90,95,0.12); padding: 8px 16px; border-radius: 20px; color: #ff5a5f; font-size: 13px; font-weight: 600; }
+        .streak svg { width: 16px; height: 16px; }
+        .rings { display: flex; justify-content: space-around; margin-bottom: 28px; padding: 20px 0; }
+        .ring { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .ring svg { width: 80px; height: 80px; transform: rotate(-90deg); }
+        .ring svg circle { fill: none; stroke-width: 6; stroke-linecap: round; }
+        .ring .bg { stroke: rgba(255,255,255,0.06); }
+        .ring .progress { stroke-dasharray: 220; stroke-dashoffset: 55; }
+        .ring .label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+        .ring .value { font-size: 14px; font-weight: 700; color: #fff; }
+        .ring.red .progress { stroke: #ff5a5f; }
+        .ring.cyan .progress { stroke: #00d4aa; }
+        .ring.purple .progress { stroke: #8b5cf6; }
+        .quick-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
+        .qs-card { background: rgba(255,255,255,0.04); border-radius: 14px; padding: 14px; text-align: center; border: 1px solid rgba(255,255,255,0.06); }
+        .qs-card .num { font-size: 20px; font-weight: 700; color: #fff; }
+        .qs-card .lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+        .section-title { color: #fff; font-size: 16px; font-weight: 600; margin-bottom: 14px; display: flex; justify-content: space-between; }
+        .section-title span { color: rgba(255,255,255,0.4); font-size: 13px; font-weight: 400; }
+        .workout-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+        .workout { display: flex; align-items: center; gap: 14px; padding: 14px; background: rgba(255,255,255,0.04); border-radius: 14px; border: 1px solid rgba(255,255,255,0.06); }
+        .workout-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+        .workout-info { flex: 1; }
+        .workout-info h4 { color: #fff; font-size: 14px; font-weight: 500; }
+        .workout-info p { color: rgba(255,255,255,0.4); font-size: 12px; }
+        .workout .cal { color: #ff5a5f; font-size: 14px; font-weight: 600; }
+        .xp-bar { background: rgba(255,255,255,0.06); border-radius: 10px; height: 8px; margin-bottom: 4px; overflow: hidden; }
+        .xp-fill { height: 100%; width: 68%; background: linear-gradient(90deg, #ff5a5f, #ff8a5c); border-radius: 10px; }
+        .level-info { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+        .bottom-nav { display: flex; justify-content: space-around; padding: 12px 0 8px; border-top: 1px solid rgba(255,255,255,0.06); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: rgba(255,255,255,0.3); font-size: 10px; cursor: pointer; }
+        .nav-item.active { color: #ff5a5f; }
+        .nav-item svg { width: 22px; height: 22px; }
+        .nav-item.active svg { stroke: #ff5a5f; }
+    </style>
+</head>
+<body>
+    <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="status-bar"><span>9:41</span><span>91%</span></div>
+        <div class="content">
+            <div class="header">
+                <div>
+                    <h1>FitTrack</h1>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 8px;">
+                        <div class="streak">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            12-day streak
+                        </div>
+                    </div>
+                </div>
+                <div class="badge">Level 7</div>
+            </div>
+            <div class="rings">
+                <div class="ring red">
+                    <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="35"/><circle class="progress" cx="40" cy="40" r="35"/></svg>
+                    <div class="value">6,842</div>
+                    <div class="label">Steps</div>
+                </div>
+                <div class="ring cyan">
+                    <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="35"/><circle class="progress" cx="40" cy="40" r="35" style="stroke-dashoffset: 88;"/></svg>
+                    <div class="value">48 min</div>
+                    <div class="label">Active</div>
+                </div>
+                <div class="ring purple">
+                    <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="35"/><circle class="progress" cx="40" cy="40" r="35" style="stroke-dashoffset: 130;"/></svg>
+                    <div class="value">1,520</div>
+                    <div class="label">Calories</div>
+                </div>
+            </div>
+            <div class="quick-stats">
+                <div class="qs-card"><div class="num">8.2</div><div class="lbl">km walked</div></div>
+                <div class="qs-card"><div class="num">12</div><div class="lbl">workouts</div></div>
+                <div class="qs-card"><div class="num">198</div><div class="lbl">streak hrs</div></div>
+            </div>
+            <div class="xp-bar"><div class="xp-fill"></div></div>
+            <div class="level-info"><span>Level 7 · 2,180 XP</span><span>2,400 XP to level 8</span></div>
+            <div class="section-title">
+                <span>Today's Workouts</span>
+                <span>View all</span>
+            </div>
+            <div class="workout-list">
+                <div class="workout">
+                    <div class="workout-icon" style="background: rgba(255,90,95,0.15);">🏃</div>
+                    <div class="workout-info">
+                        <h4>Morning Run</h4>
+                        <p>5.2 km · 32 min</p>
+                    </div>
+                    <div class="cal">342 cal</div>
+                </div>
+                <div class="workout">
+                    <div class="workout-icon" style="background: rgba(0,212,170,0.15);">🏋️</div>
+                    <div class="workout-info">
+                        <h4>Upper Body Strength</h4>
+                        <p>4 sets · 40 min</p>
+                    </div>
+                    <div class="cal">287 cal</div>
+                </div>
+                <div class="workout">
+                    <div class="workout-icon" style="background: rgba(139,92,246,0.15);">🧘</div>
+                    <div class="workout-info">
+                        <h4>Evening Yoga</h4>
+                        <p>Flow · 25 min</p>
+                    </div>
+                    <div class="cal">118 cal</div>
+                </div>
+            </div>
+            <div class="bottom-nav">
+                <div class="nav-item active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                    Home
+                </div>
+                <div class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10m0 0l-4 4m4-4l4 4M4 4h16"/><path d="M12 20V10"/></svg>
+                    Activity
+                </div>
+                <div class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+                    Social
+                </div>
+                <div class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                    Profile
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

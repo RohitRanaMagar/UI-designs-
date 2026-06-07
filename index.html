@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Portfolio — Rohit Rana Magar</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #f8fafc; color: #1a1e24; }
+        .hero { background: linear-gradient(135deg, #1a3a2e, #2d6a4f); color: #fff; padding: 60px 24px; text-align: center; }
+        .hero h1 { font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 8px; }
+        .hero p { font-size: 16px; color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+        .card { background: #fff; border-radius: 18px; overflow: hidden; border: 1px solid #eef2f6; transition: transform 0.2s, box-shadow 0.2s; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
+        .card .preview { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative; }
+        .card .preview .tag { position: absolute; top: 12px; right: 12px; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+        .card .info { padding: 20px; }
+        .card .info h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+        .card .info p { font-size: 13px; color: #5a6a7a; line-height: 1.5; margin-bottom: 12px; }
+        .card .info .links { display: flex; gap: 10px; }
+        .card .info .links a { padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; transition: all 0.2s; }
+        .link-live { background: #2d6a4f; color: #fff; }
+        .link-live:hover { background: #1e4d38; }
+        .link-spec { background: #eef2f6; color: #1a1e24; }
+        .link-spec:hover { background: #d8e0e8; }
+        .section-title { font-size: 22px; font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+        .section-title .count { font-size: 14px; font-weight: 400; color: #5a6a7a; }
+        .ux-section { margin-top: 48px; }
+        .design-system-card { background: linear-gradient(135deg, #f0f6ff, #f8fafc); border: 2px solid #c8ddf8; }
+        .footer { text-align: center; padding: 32px; color: #aab8c8; font-size: 13px; border-top: 1px solid #eef2f6; }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 28px; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>UI/UX Design Portfolio</h1>
+        <p>6 original mockups · Design system · UX research · Figma-ready specs</p>
+    </div>
+    <div class="container">
+        <div class="section-title">
+            Mockups <span class="count">6 projects</span>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="preview" style="background: linear-gradient(135deg, #f0f5f3, #d8eae2); color: #2d6a4f;">🏥<div class="tag" style="background:#2d6a4f;color:#fff;">Healthcare</div></div>
+                <div class="info">
+                    <h3>MediConnect</h3>
+                    <p>Telehealth patient dashboard with appointments, care team, and health stats.</p>
+                    <div class="links"><a class="link-live" href="mockups/MediConnect_Telehealth.html">View Mockup</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="preview" style="background: linear-gradient(135deg, #0d0d12, #1e1e2a); color: #ff5a5f;">🏋️<div class="tag" style="background:#ff5a5f;color:#fff;">Fitness</div></div>
+                <div class="info">
+                    <h3>FitTrack</h3>
+                    <p>Mobile fitness app with progress rings, XP system, and streak tracking.</p>
+                    <div class="links"><a class="link-live" href="mockups/mobile/FitTrack_App.html">View Mockup</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="preview" style="background: linear-gradient(135deg, #2c2420, #7a6b60); color: #d4a574;">✈️<div class="tag" style="background:#c4683e;color:#fff;">Travel</div></div>
+                <div class="info">
+                    <h3>Wanderlust</h3>
+                    <p>Travel discovery platform with immersive hero, destination cards, and experiences.</p>
+                    <div class="links"><a class="link-live" href="mockups/web/Wanderlust_Travel.html">View Mockup</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="preview" style="background: linear-gradient(135deg, #f8f6f4, #e8e2dc); color: #e85d3a;">🍕<div class="tag" style="background:#e85d3a;color:#fff;">Delivery</div></div>
+                <div class="info">
+                    <h3>FoodieExpress</h3>
+                    <p>Food delivery mobile app with live order tracking and restaurant discovery.</p>
+                    <div class="links"><a class="link-live" href="mockups/mobile/FoodieExpress.html">View Mockup</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="preview" style="background: linear-gradient(135deg, #08080e, #1a1a2e); color: #f0c040;">₿<div class="tag" style="background:#f0c040;color:#1a1e24;">Blockchain</div></div>
+                <div class="info">
+                    <h3>CryptoNode</h3>
+                    <p>Blockchain analytics dashboard with live chart, portfolio, and market data.</p>
+                    <div class="links"><a class="link-live" href="mockups/web/CryptoNode_Dashboard.html">View Mockup</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="preview" style="background: linear-gradient(135deg, #f4f7fa, #ffffff); color: #3a86ff;">🏠<div class="tag" style="background:#3a86ff;color:#fff;">IoT</div></div>
+                <div class="info">
+                    <h3>SmartHome</h3>
+                    <p>IoT control panel with room grid, device toggles, climate control, and energy tracking.</p>
+                    <div class="links"><a class="link-live" href="mockups/web/SmartHome_Control.html">View Mockup</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ux-section">
+            <div class="section-title">Design Assets</div>
+            <div class="grid">
+                <div class="card design-system-card">
+                    <div class="preview" style="background: linear-gradient(135deg, #f0f6ff, #e8f0e8); color: #2d6a4f;">🎨<div class="tag" style="background:#2d6a4f;color:#fff;">System</div></div>
+                    <div class="info">
+                        <h3>Design System</h3>
+                        <p>Live style guide with color palettes, typography scale, components, spacing grid, and accessibility guidelines.</p>
+                        <div class="links">
+                            <a class="link-live" href="assets/Design_System.html">View Guide</a>
+                            <a class="link-spec" href="assets/Figma_Design_Specs.md">Figma Specs</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="preview" style="background: linear-gradient(135deg, #f0f5f3, #ffffff); color: #40916c;">📋<div class="tag" style="background:#5a6a7a;color:#fff;">Research</div></div>
+                    <div class="info">
+                        <h3>UX Research</h3>
+                        <p>Personas, user journeys, and catalog for the portfolio projects.</p>
+                        <div class="links">
+                            <a class="link-spec" href="ux-research/EcoStream_Research.md">View Research</a>
+                            <a class="link-spec" href="ux-research/Project_Catalog.md">Project Catalog</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="preview" style="background: linear-gradient(135deg, #fce8e0, #ffffff); color: #e85d3a;">🔗<div class="tag" style="background:#5a6a7a;color:#fff;">Figma</div></div>
+                    <div class="info">
+                        <h3>Figma Integration</h3>
+                        <p>Community Figma benchmarks and interactive prototype references.</p>
+                        <div class="links"><a class="link-spec" href="assets/figma/Figma_Links.md">View Links</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        UI/UX Internship Portfolio 2026 · All mockups are original designs
+    </div>
+</body>
+</html>

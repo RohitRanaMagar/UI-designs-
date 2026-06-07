@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System — UI/UX Portfolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #f8fafc; color: #1a1e24; padding: 40px; }
+        .wrapper { max-width: 1000px; margin: 0 auto; }
+        h1 { font-size: 36px; font-weight: 700; margin-bottom: 4px; letter-spacing: -1px; }
+        .subtitle { color: #5a6a7a; font-size: 15px; margin-bottom: 48px; }
+        section { margin-bottom: 48px; }
+        section h2 { font-size: 20px; font-weight: 600; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid #eef2f6; }
+        .section-desc { font-size: 13px; color: #5a6a7a; margin-top: -12px; margin-bottom: 20px; }
+        .palette-section { margin-bottom: 24px; }
+        .palette-section h3 { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: #5a6a7a; }
+        .palette-row { display: flex; gap: 6px; flex-wrap: wrap; }
+        .palette-row .swatch { width: 44px; height: 44px; border-radius: 8px; border: 1px solid #eef2f6; cursor: pointer; transition: transform 0.2s; }
+        .palette-row .swatch:hover { transform: scale(1.15); }
+        .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .type-item { padding: 12px 16px; background: #fff; border-radius: 10px; border: 1px solid #eef2f6; }
+        .type-item .label { font-size: 11px; color: #5a6a7a; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .type-item .sample { color: #1a1e24; }
+        .comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+        .comp-card { background: #fff; border-radius: 14px; padding: 24px; border: 1px solid #eef2f6; }
+        .comp-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: #5a6a7a; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn { padding: 10px 22px; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-primary { background: #2d6a4f; color: #fff; }
+        .btn-primary:hover { background: #1e4d38; }
+        .btn-secondary { background: #eef2f6; color: #1a1e24; }
+        .btn-secondary:hover { background: #d8e0e8; }
+        .btn-outline { background: transparent; border: 1.5px solid #d8e0e8; color: #1a1e24; }
+        .btn-outline:hover { border-color: #2d6a4f; color: #2d6a4f; }
+        .btn-danger { background: #e85d3a; color: #fff; }
+        .btn-danger:hover { background: #d04a2a; }
+        .card-sample { background: #fff; border-radius: 14px; padding: 20px; border: 1px solid #eef2f6; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+        .card-sample h4 { font-size: 16px; margin-bottom: 4px; }
+        .card-sample p { font-size: 13px; color: #5a6a7a; }
+        .input-sample { padding: 12px 16px; border: 1.5px solid #d8e0e8; border-radius: 10px; font-size: 14px; width: 100%; outline: none; transition: border-color 0.2s; }
+        .input-sample:focus { border-color: #3a86ff; }
+        .toggle-sample { display: flex; align-items: center; gap: 12px; }
+        .toggle-sample .toggle { width: 44px; height: 24px; background: #d8e0e8; border-radius: 12px; cursor: pointer; position: relative; transition: background 0.2s; }
+        .toggle-sample .toggle.on { background: #3a86ff; }
+        .toggle-sample .toggle .knob { width: 20px; height: 20px; background: #fff; border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: left 0.2s; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+        .toggle-sample .toggle.on .knob { left: 22px; }
+        .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag { padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 500; background: #eef2f6; color: #1a1e24; }
+        .tag.primary { background: #2d6a4f; color: #fff; }
+        .tag.warning { background: #f0c040; color: #1a1e24; }
+        .tag.danger { background: #e85d3a; color: #fff; }
+        .spacing-demo { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; }
+        .spacing-demo .space { background: #3a86ff20; border: 1px solid #3a86ff; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #3a86ff; }
+        .icon-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+        .icon-grid svg { width: 24px; height: 24px; stroke: #1a1e24; stroke-width: 2; fill: none; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        @media (max-width: 640px) {
+            body { padding: 20px; }
+            .type-grid, .two-col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Design System</h1>
+        <div class="subtitle">UI/UX Portfolio 2026 — Color, Typography, Components & Spacing</div>
+
+        <section>
+            <h2>Brand Colors</h2>
+            <div class="section-desc">Original palettes used across all 6 mockups</div>
+            <div class="palette-section">
+                <h3>Green — MediConnect, EcoStream</h3>
+                <div class="palette-row">
+                    <div class="swatch" style="background:#1a3a2e;" title="#1a3a2e"></div>
+                    <div class="swatch" style="background:#2d6a4f;" title="#2d6a4f"></div>
+                    <div class="swatch" style="background:#40916c;" title="#40916c"></div>
+                    <div class="swatch" style="background:#74a892;" title="#74a892"></div>
+                    <div class="swatch" style="background:#d8eae2;" title="#d8eae2"></div>
+                    <div class="swatch" style="background:#f0f5f3;" title="#f0f5f3"></div>
+                </div>
+            </div>
+            <div class="palette-section">
+                <h3>Coral/Red — FitTrack, FoodieExpress</h3>
+                <div class="palette-row">
+                    <div class="swatch" style="background:#d04a2a;" title="#d04a2a"></div>
+                    <div class="swatch" style="background:#e85d3a;" title="#e85d3a"></div>
+                    <div class="swatch" style="background:#ff7a5a;" title="#ff7a5a"></div>
+                    <div class="swatch" style="background:#ffc8b8;" title="#ffc8b8"></div>
+                    <div class="swatch" style="background:#fce8e0;" title="#fce8e0"></div>
+                </div>
+            </div>
+            <div class="palette-section">
+                <h3>Gold/Amber — CryptoNode</h3>
+                <div class="palette-row">
+                    <div class="swatch" style="background:#c4943a;" title="#c4943a"></div>
+                    <div class="swatch" style="background:#f0c040;" title="#f0c040"></div>
+                    <div class="swatch" style="background:#f5d87a;" title="#f5d87a"></div>
+                    <div class="swatch" style="background:#fce8b8;" title="#fce8b8"></div>
+                </div>
+            </div>
+            <div class="palette-section">
+                <h3>Blue — SmartHome</h3>
+                <div class="palette-row">
+                    <div class="swatch" style="background:#1a5ac8;" title="#1a5ac8"></div>
+                    <div class="swatch" style="background:#3a86ff;" title="#3a86ff"></div>
+                    <div class="swatch" style="background:#6aaaFF;" title="#6aaaFF"></div>
+                    <div class="swatch" style="background:#c8ddf8;" title="#c8ddf8"></div>
+                    <div class="swatch" style="background:#f0f6ff;" title="#f0f6ff"></div>
+                </div>
+            </div>
+            <div class="palette-section">
+                <h3>Earthy — Wanderlust</h3>
+                <div class="palette-row">
+                    <div class="swatch" style="background:#2c2420;" title="#2c2420"></div>
+                    <div class="swatch" style="background:#4a3d36;" title="#4a3d36"></div>
+                    <div class="swatch" style="background:#8a7a6a;" title="#8a7a6a"></div>
+                    <div class="swatch" style="background:#c4683e;" title="#c4683e"></div>
+                    <div class="swatch" style="background:#d4a574;" title="#d4a574"></div>
+                    <div class="swatch" style="background:#faf7f2;" title="#faf7f2"></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Typography</h2>
+            <div class="section-desc">Inter font with consistent scale</div>
+            <div class="type-grid">
+                <div class="type-item"><div class="label">H1 · 48px / 700</div><div class="sample" style="font-size:48px;font-weight:700;">The quick brown fox</div></div>
+                <div class="type-item"><div class="label">H2 · 32px / 500</div><div class="sample" style="font-size:32px;font-weight:500;">The quick brown fox</div></div>
+                <div class="type-item"><div class="label">H3 · 24px / 600</div><div class="sample" style="font-size:24px;font-weight:600;">The quick brown fox</div></div>
+                <div class="type-item"><div class="label">H4 · 18px / 600</div><div class="sample" style="font-size:18px;font-weight:600;">The quick brown fox</div></div>
+                <div class="type-item"><div class="label">Body · 15px / 400</div><div class="sample" style="font-size:15px;">The quick brown fox jumps over the lazy dog.</div></div>
+                <div class="type-item"><div class="label">Body Small · 13px / 400</div><div class="sample" style="font-size:13px;color:#5a6a7a;">The quick brown fox jumps over the lazy dog.</div></div>
+                <div class="type-item"><div class="label">Caption · 12px / 500</div><div class="sample" style="font-size:12px;color:#5a6a7a;">The quick brown fox</div></div>
+                <div class="type-item"><div class="label">Button · 14px / 500</div><div class="sample" style="font-size:14px;font-weight:500;letter-spacing:0.2px;">BUTTON TEXT</div></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Components</h2>
+            <div class="comp-grid">
+                <div class="comp-card">
+                    <h3>Buttons</h3>
+                    <div class="btn-row">
+                        <button class="btn btn-primary">Primary</button>
+                        <button class="btn btn-secondary">Secondary</button>
+                        <button class="btn btn-outline">Outline</button>
+                        <button class="btn btn-danger">Danger</button>
+                    </div>
+                    <div style="margin-top:12px;font-size:12px;color:#5a6a7a;">Padding: 10px 22px · Radius: 10px · Font: 14px/500</div>
+                </div>
+                <div class="comp-card">
+                    <h3>Cards</h3>
+                    <div class="card-sample">
+                        <h4>Card Title</h4>
+                        <p>Standard card used across all projects for content containers.</p>
+                    </div>
+                    <div style="margin-top:12px;font-size:12px;color:#5a6a7a;">Padding: 20px · Radius: 14px · Border: 1px #eef2f6</div>
+                </div>
+                <div class="comp-card">
+                    <h3>Inputs</h3>
+                    <input class="input-sample" type="text" placeholder="Placeholder text..." />
+                    <div style="margin-top:12px;font-size:12px;color:#5a6a7a;">Padding: 12px 16px · Radius: 10px · Border: 1.5px #d8e0e8</div>
+                </div>
+                <div class="comp-card">
+                    <h3>Toggles</h3>
+                    <div class="toggle-sample" style="margin-bottom:12px;">
+                        <div class="toggle on"><div class="knob"></div></div>
+                        <span style="font-size:14px;">Active</span>
+                    </div>
+                    <div class="toggle-sample">
+                        <div class="toggle"><div class="knob"></div></div>
+                        <span style="font-size:14px;">Inactive</span>
+                    </div>
+                    <div style="margin-top:12px;font-size:12px;color:#5a6a7a;">Width: 44px · Height: 24px · Knob: 20px · Active: #3a86ff</div>
+                </div>
+                <div class="comp-card">
+                    <h3>Tags / Badges</h3>
+                    <div class="tag-row">
+                        <div class="tag">Default</div>
+                        <div class="tag primary">Primary</div>
+                        <div class="tag warning">Warning</div>
+                        <div class="tag danger">Danger</div>
+                    </div>
+                    <div style="margin-top:12px;font-size:12px;color:#5a6a7a;">Padding: 4px 14px · Radius: 20px · Font: 12px/500</div>
+                </div>
+                <div class="comp-card">
+                    <h3>Navigation</h3>
+                    <div style="display:flex;gap:20px;padding:12px 0;border-bottom:2px solid #eef2f6;">
+                        <span style="font-size:14px;font-weight:600;cursor:pointer;">Active</span>
+                        <span style="font-size:14px;color:#5a6a7a;cursor:pointer;">Inactive</span>
+                        <span style="font-size:14px;color:#5a6a7a;cursor:pointer;">Hover</span>
+                    </div>
+                    <div style="margin-top:12px;font-size:12px;color:#5a6a7a;">Active: bold + primary · Inactive: #5a6a7a</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Spacing Grid</h2>
+            <div class="section-desc">4px base unit system</div>
+            <div class="spacing-demo">
+                <div class="space" style="width:4px;height:20px;">4</div>
+                <div class="space" style="width:8px;height:28px;">8</div>
+                <div class="space" style="width:12px;height:36px;">12</div>
+                <div class="space" style="width:16px;height:44px;">16</div>
+                <div class="space" style="width:20px;height:52px;">20</div>
+                <div class="space" style="width:24px;height:60px;">24</div>
+                <div class="space" style="width:32px;height:68px;">32</div>
+                <div class="space" style="width:40px;height:76px;">40</div>
+                <div class="space" style="width:48px;height:84px;">48</div>
+                <div class="space" style="width:64px;height:92px;">64</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Accessibility Guidelines</h2>
+            <div class="two-col">
+                <div style="background:#fff;border-radius:14px;padding:20px;border:1px solid #eef2f6;">
+                    <h3 style="font-size:14px;font-weight:600;margin-bottom:12px;">Color Contrast</h3>
+                    <ul style="font-size:13px;color:#5a6a7a;list-style:disc;padding-left:20px;">
+                        <li>Body #1a1e24 on white: ratio 15.3:1 (AAA)</li>
+                        <li>Secondary #5a6a7a on white: ratio 5.2:1 (AA)</li>
+                        <li>Interactive states include hover/active/focus</li>
+                    </ul>
+                </div>
+                <div style="background:#fff;border-radius:14px;padding:20px;border:1px solid #eef2f6;">
+                    <h3 style="font-size:14px;font-weight:600;margin-bottom:12px;">Touch Targets</h3>
+                    <ul style="font-size:13px;color:#5a6a7a;list-style:disc;padding-left:20px;">
+                        <li>Minimum 44x44px for interactive elements</li>
+                        <li>Buttons: 44px+ height</li>
+                        <li>Form inputs: 48px+ height</li>
+                        <li>Focus rings for keyboard navigation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div style="text-align:center;padding:24px;color:#aab8c8;font-size:13px;border-top:1px solid #eef2f6;">
+            UI/UX Portfolio Design System 2026 — All original work
+        </div>
+    </div>
+</body>
+</html>

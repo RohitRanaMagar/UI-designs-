@@ -1,27 +1,32 @@
-# UI/UX Design Showcase 🎨
+# UI/UX Design Portfolio
 
-This repository contains a collection of high-fidelity UI mockups, UX research documentation, and interactive prototypes developed for modern web and mobile applications.
+6 original high-fidelity mockups + design system + UX research for a UI/UX intern interview.
 
-## 🚀 Projects Included (12+ Concepts)
+> **[Open Portfolio Index →](./index.html)**
 
-1.  **EcoStream** - Sustainability Dashboard (Glassmorphism)
-2.  **NeoBank** - Fintech Mobile App (High-Contrast/Modern)
-3.  **MediConnect** - Telehealth Interface (Accessibility Focus)
-4.  **Wanderlust** - Travel Discovery Platform
-5.  **CryptoNode** - Blockchain Analytics
-6.  **FitTrack** - Gamification Fitness App
-7.  *...and many more industry-specific case studies.*
+## Mockups
 
-👉 **[View Full Project Catalog](./ux-research/Project_Catalog.md)**
+| Project | Theme | File |
+|---------|-------|------|
+| **MediConnect** | Telehealth dashboard | `mockups/MediConnect_Telehealth.html` |
+| **FitTrack** | Fitness gamification app | `mockups/mobile/FitTrack_App.html` |
+| **Wanderlust** | Travel discovery platform | `mockups/web/Wanderlust_Travel.html` |
+| **FoodieExpress** | Food delivery app | `mockups/mobile/FoodieExpress.html` |
+| **CryptoNode** | Blockchain analytics | `mockups/web/CryptoNode_Dashboard.html` |
+| **SmartHome** | IoT control panel | `mockups/web/SmartHome_Control.html` |
 
-## 🎨 Figma Integration
-View interactive design files, prototypes, and design systems directly in Figma:
-👉 **[Live Figma Portfolio & Style Guides](./assets/figma/Figma_Links.md)**
+## Design Assets
+- **[Design System](./assets/Design_System.html)** — Colors, typography, components, spacing, accessibility
+- **[Figma Specs](./assets/Figma_Design_Specs.md)** — Complete design tokens to rebuild in Figma/Canva
+- **[Project Catalog](./ux-research/Project_Catalog.md)** — All 12 concept descriptions
+- **[UX Research Sample](./ux-research/EcoStream_Research.md)** — Personas and journey maps
 
-## 📂 Repository Structure
-- `/mockups`: CSS/HTML implementations of key UI screens.
-- `/ux-research`: Personas, User Journeys, and Wireframes.
-- `/assets/figma`: Links to high-fidelity Figma prototypes.
+## Structure
+```
+mockups/          HTML mockups (desktop + mobile)
+assets/           Design system + figma specs
+ux-research/      Research docs + project catalog
+```
 
 ---
-*Created for UI/UX Internship Interview - 2026*
+*Original designs — UI/UX Internship Portfolio 2026*
